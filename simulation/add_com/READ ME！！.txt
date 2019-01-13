@@ -1,0 +1,34 @@
+在项目目录下必须有config.txt
+config为配置文件 用来配置参数（项目中有示例）
+文件格式如下所示：
+
+
+
+ref.txt
+inverion rate:0.5
+complex indel rate=0:60:20:20
+GROUP: 
+100,200:5
+300,400:5
+
+
+第一行表示ref的文件名
+
+第二行表示的是insert发生inverse的概率，这个范围必须在0到1之间
+
+第三行表示的是复杂indel的类型比例  REF:5OR3:5AND3:REFand5AND3   比例之和必须为100,且不能有负比例
+
+第五行之后 每行表示的是indel的分组信息   每一行表示一组indel   A,B:C  表示随机生成C个indel 且大小范围为A到B
+
+注意：
+标点符号注意全部为英文标点
+ABC均为正整数
+范围必须满足A<=B
+del和ins的位置随机取值,服从均匀分布,并且插入的位置不会选在被del的区域内(REF型除外)
+ins插入的总大小 在del的大小范围内（-5bp-+5bp）均匀随机波动
+
+
+
+输出的文件为两个 一个是refsim.txt  这个是生成的仿真数据
+一个indelinformation.txt 这个是生成的indel的各个信息
+
